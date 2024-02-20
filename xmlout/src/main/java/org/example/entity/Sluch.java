@@ -1,24 +1,25 @@
 package org.example.entity;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.util.Objects;
+import java.util.HashSet;
+import java.util.Set;
 
 @Getter
 @Setter
 @NoArgsConstructor
 @Entity
 @Table(name = "sluch_22")
-public class sluch {
+public class Sluch {
     @Id
     @Column(name = "sl_id")
     private String slId;
@@ -116,7 +117,8 @@ public class sluch {
     @Column(name = "pr_ds")
     private Integer prDs;
 
-
+    @OneToMany(mappedBy = "sl", fetch = FetchType.EAGER)
+    private Set<Usl> uslSet;
 
 
 }

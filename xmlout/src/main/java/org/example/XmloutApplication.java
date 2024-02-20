@@ -66,7 +66,7 @@ public class XmloutApplication {
         properties.put("current_session_context_class",
                 env.getProperty("spring.jpa.properties.hibernate.current_session_context_class"));
         LocalSessionFactoryBean sessionFactoryBean = new LocalSessionFactoryBean();
-        sessionFactoryBean.setPackagesToScan("org.ktfoms.med.entity");
+        sessionFactoryBean.setPackagesToScan("org.example");
         sessionFactoryBean.setDataSource(dataSource);
         sessionFactoryBean.setHibernateProperties(properties);
         sessionFactoryBean.afterPropertiesSet();
@@ -90,7 +90,7 @@ public class XmloutApplication {
                 env.getProperty("spring.jpa.properties.hibernate.current_session_context_class"));
 
         LocalContainerEntityManagerFactoryBean factoryBean = new LocalContainerEntityManagerFactoryBean();
-        factoryBean.setPackagesToScan("org.ktfoms.med.entity");
+        factoryBean.setPackagesToScan("org.example.entity");
         factoryBean.setDataSource(dataSource);
         factoryBean.setJpaVendorAdapter(new HibernateJpaVendorAdapter());
         factoryBean.setJpaProperties(properties);

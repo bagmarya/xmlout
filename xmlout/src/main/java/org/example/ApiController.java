@@ -24,12 +24,15 @@ import java.time.format.DateTimeFormatter;
 @RequestMapping(value = "/api", produces = MediaType.APPLICATION_JSON_VALUE)
 public class ApiController {
 
-
+    @Autowired
+    private XmlService xmlService;
 
 
 
     @RequestMapping(value = { "/get_xml" }, method = RequestMethod.GET, produces = "application/xml;charset=UTF-8")
     public ResponseEntity<String> getXml() throws IOException {
+//        xmlService.getXml(2017, 12);
+        xmlService.get2022Xml();
         HttpHeaders h = new HttpHeaders();
         h.set("Content-Disposition", "attachment; filename=\"SZT_" + LocalDate.now().format(DateTimeFormatter.ofPattern("uuuuMMdd")) + ".xml\"");
         return new ResponseEntity<>("lpuService.getFileSpFundingNormaSmp()",h, HttpStatus.OK);

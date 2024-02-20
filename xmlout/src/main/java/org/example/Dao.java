@@ -1,6 +1,8 @@
 package org.example;
 
 
+import org.example.entity.People;
+import org.example.entity.Sluch;
 import org.hibernate.SessionFactory;
 
 import org.slf4j.Logger;
@@ -28,6 +30,15 @@ public class Dao {
         this.sessionFactory = sessionFactory;
     }
 
+    public List<Sluch> getListSluch(Integer year, Integer month) {
+        return sessionFactory.getCurrentSession().createQuery("select s from Sluch s where s.year =:year and s.month =:month order by s.slId", Sluch.class)
+                .setParameter("year", year)
+                .setParameter("month", month).getResultList();
+    }
+public List<People> gePeople() {
+        return sessionFactory.getCurrentSession().createQuery("select p from People p", People.class)
+                .getResultList();
+    }
 //    @Transactional
 //    public List<Lpu> getLpuEntityList() {
 //        return sessionFactory.getCurrentSession().createQuery("select l from Lpu l  where l.dateEnd is null and l.mkod!=450000 order by l.mkod", Lpu.class)

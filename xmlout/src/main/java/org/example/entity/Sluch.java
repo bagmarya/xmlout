@@ -18,7 +18,7 @@ import java.util.Set;
 @Setter
 @NoArgsConstructor
 @Entity
-@Table(name = "sluch_22")
+@Table(name = "sluch")
 public class Sluch {
     @Id
     @Column(name = "sl_id")
@@ -119,6 +119,12 @@ public class Sluch {
 
     @OneToMany(mappedBy = "sl", fetch = FetchType.EAGER)
     private Set<Usl> uslSet;
+
+    @Column(name = "year_d")
+    private Integer yearD;
+
+    @Column(name = "month_d")
+    private Integer monthD;
 
 
 }

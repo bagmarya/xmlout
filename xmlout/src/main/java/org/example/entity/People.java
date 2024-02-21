@@ -18,7 +18,7 @@ import java.time.LocalDate;
 @Setter
 @NoArgsConstructor
 @Entity
-@Table(name = "people_22")
+@Table(name = "people_all")
 public class People {
     @Id
     @Column(name = "enp")
@@ -29,4 +29,11 @@ public class People {
 
     @Column(name = "ndeath")
     private String ndeath;
+
+    @Column(name = "year_d")
+    private Integer yearD;
+
+    @Column(name = "month_d")
+    private Integer monthD;
+
 }

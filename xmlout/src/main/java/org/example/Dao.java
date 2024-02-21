@@ -31,13 +31,14 @@ public class Dao {
     }
 
     public List<Sluch> getListSluch(Integer year, Integer month) {
-        return sessionFactory.getCurrentSession().createQuery("select s from Sluch s where s.year =:year and s.month =:month order by s.slId", Sluch.class)
+        return sessionFactory.getCurrentSession().createQuery("select s from Sluch s where s.yearD =:year and s.monthD =:month order by s.slId", Sluch.class)
                 .setParameter("year", year)
                 .setParameter("month", month).getResultList();
     }
-public List<People> gePeople() {
-        return sessionFactory.getCurrentSession().createQuery("select p from People p", People.class)
-                .getResultList();
+public List<People> gePeople(Integer year, Integer month) {
+        return sessionFactory.getCurrentSession().createQuery("select p from People p where p.yearD =:year and p.monthD =:month", People.class)
+                .setParameter("year", year)
+                .setParameter("month", month).getResultList();
     }
 //    @Transactional
 //    public List<Lpu> getLpuEntityList() {

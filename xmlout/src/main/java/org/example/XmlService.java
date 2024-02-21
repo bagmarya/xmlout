@@ -39,7 +39,7 @@ public class XmlService {
     }
 
     public String get2022Xml() throws IOException {
-        for(Integer y: List.of(2017, 2018, 2019, 2020, 2021, 2022, 2023)){
+        for(Integer y: List.of(2022, 2023)){
             for(int m = 1; m < 13; m++){
                 getXml(y, m);
             }
@@ -48,7 +48,7 @@ public class XmlService {
     }
 
     public String  getXml(Integer year, Integer month) throws IOException {
-        List<People> listPeople = dao.gePeople();
+        List<People> listPeople = dao.gePeople(year, month);
         Map<String, People> mapPeople = listPeople.stream().collect(Collectors.toMap(People::getEnp, p -> p));
 
         List<Sluch> listSluch = dao.getListSluch(year, month);
@@ -107,11 +107,13 @@ public class XmlService {
                     "\t\t</KSG_KPG>\n");
             }
             if(s.getUslSet().size() > 0){
-                output.write("\t\t<USL>\n");
+
                 for (Usl u : s.getUslSet()){
+                    output.write("\t\t<USL>\n");
                     output.write("\t\t\t<VID_VME>" + u.getVidVme() + "</VID_VME>\n");
+                    output.write("\t\t</USL>\n");
                 }
-                output.write("\t\t</USL>\n");
+
             }
             output.write("\t\t<DS_ONK>" + s.getDsOnk() + "</DS_ONK>\n");
             if(s.getRsltD() != null) {output.write("\t\t<RSLT_D>" + s.getRsltD() + "</RSLT_D>\n");}

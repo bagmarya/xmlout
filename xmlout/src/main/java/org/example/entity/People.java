@@ -36,4 +36,10 @@ public class People {
     @Column(name = "month_d")
     private Integer monthD;
 
+    @Column(name = "IDPOL")
+    private Integer idpol;
+
+    @Column(name = "GR")
+    private Integer gr;
+
 }
